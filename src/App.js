@@ -1,28 +1,23 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
-import LoginPage from "./pages/LoginPage";
-import DashboardPage from "./pages/DashboardPage";
-import ReportsPage from "./pages/ReportsPage";
-import VehicleTypePage from "./pages/VehicleTypePage";
-import QRScannerPage from "./pages/QRScannerPage";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import BuyerDashboard from "./pages/BuyerDashboard"; // Import the new dashboard component
 
 const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/vehicle-type" element={<VehicleTypePage />} />
-        <Route path="/reports" element={<ReportsPage />} />
-        <Route path="/scan-qr" element={<QRScannerPage />} />
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/buyer-dashboard" element={<BuyerDashboard />} />{" "}
+        {/* Add buyer dashboard route */}
+        {/* Redirect root to login */}
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        {/* Optional: 404 Not Found Route */}
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 };
 
