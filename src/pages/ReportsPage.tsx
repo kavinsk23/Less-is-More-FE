@@ -28,7 +28,7 @@ const ReportsPage: React.FC = () => {
           <h1 className="text-xl font-bold text-indigo-800">Reports</h1>
           <button
             onClick={() => navigate(-1)}
-            className="text-xs px-3 py-1 bg-emerald-500 text-white rounded hover:bg-emerald-600 transition-colors"
+            className="text-sm px-3 py-2 w-20 flex justify-center text-center ml-auto bg-emerald-500 text-white rounded hover:bg-emerald-600 transition-colors"
           >
             Back
           </button>

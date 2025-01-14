@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import VehicleTypeModal from "../components/VehicleTypeModal";
 import QRDisplayModal from "../components/QRDisplayModal";
-import QRScannerModal from "../components/QRScannerModal";
 
 interface QRData {
   qrString: string;
@@ -15,7 +13,6 @@ const DashboardPage = () => {
 
   const [showVehicleModal, setShowVehicleModal] = useState(false);
   const [showQRModal, setShowQRModal] = useState(false);
-  const [showScannerModal, setShowScannerModal] = useState(false);
   const [qrData, setQRData] = useState<QRData | null>(null);
 
   const handleVehicleSelect = (type: string) => {
@@ -53,20 +50,6 @@ const DashboardPage = () => {
     setShowQRModal(true);
   };
 
-  const handleQRScan = (data: string) => {
-    console.log("Scanned QR:", data);
-    // Here you can add logic to process the scanned QR code
-    // For example, calculate parking duration and fee
-    try {
-      const [type, timestamp, id] = data.split("_");
-      // Add your processing logic here
-      alert(`Scanned QR Code: ${data}`);
-    } catch (error) {
-      alert("Invalid QR Code");
-    }
-    setShowScannerModal(false);
-  };
-
   const handleOpenReports = () => {
     navigate("/reports");
   };
@@ -83,7 +66,7 @@ const DashboardPage = () => {
           {/* Issue QR Card */}
           <div
             role="button"
-            onClick={() => setShowVehicleModal(true)}
+            onClick={() => navigate("/vehicle-type")}
             className="bg-gradient-to-br from-sky-400 to-sky-600 rounded-lg shadow-md p-4 sm:p-6 cursor-pointer hover:shadow-lg transition-shadow"
           >
             <div className="flex flex-col items-center justify-center h-32 sm:h-48">
@@ -112,7 +95,7 @@ const DashboardPage = () => {
           {/* Scan QR Card */}
           <div
             role="button"
-            onClick={() => setShowScannerModal(true)}
+            onClick={() => navigate("/scan-qr")}
             className="bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg shadow-md p-4 sm:p-6 cursor-pointer hover:shadow-lg transition-shadow"
           >
             <div className="flex flex-col items-center justify-center h-32 sm:h-48">
@@ -168,27 +151,12 @@ const DashboardPage = () => {
           </div>
         </div>
 
-        {/* Modals */}
-        {showVehicleModal && (
-          <VehicleTypeModal
-            onClose={() => setShowVehicleModal(false)}
-            onSelect={handleVehicleSelect}
-          />
-        )}
-
         {showQRModal && qrData && (
           <QRDisplayModal
             qrData={qrData.qrString}
             vehicleType={qrData.vehicleType}
             timestamp={qrData.timestamp}
             onClose={() => setShowQRModal(false)}
-          />
-        )}
-
-        {showScannerModal && (
-          <QRScannerModal
-            onClose={() => setShowScannerModal(false)}
-            onScan={handleQRScan}
           />
         )}
       </div>
