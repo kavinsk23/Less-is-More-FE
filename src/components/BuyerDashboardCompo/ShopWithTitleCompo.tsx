@@ -1,5 +1,5 @@
 import React from "react";
-import ItemList from "./CardWithTitleCompo/ItemList";
+import Shoptype from "./CardWithTitleCompo/ShopType";
 
 interface Section {
   id: number;
@@ -11,17 +11,10 @@ interface Section {
 const sections: Section[] = [
   {
     id: 1,
-    title: "Shops Nearby",
+    title: "Shop Category",
     actionText: "See all",
     onActionClick: () => console.log("Featured Stores see all clicked"),
   },
-  {
-    id: 2,
-    title: "Top Rated",
-    actionText: "View more",
-    onActionClick: () => console.log("Popular Items view more clicked"),
-  },
-  // Add more sections as needed
 ];
 
 const CardWithTitleCompo: React.FC = () => {
@@ -29,7 +22,7 @@ const CardWithTitleCompo: React.FC = () => {
     <div className="space-y-4 w-max">
       {sections.map((section) => (
         <div key={section.id}>
-          <div className="flex justify-between mb-4">
+          <div className="flex justify-between">
             <h2 className="text-lg font-semibold text-neutral">
               {section.title}
             </h2>
@@ -40,7 +33,7 @@ const CardWithTitleCompo: React.FC = () => {
               {section.actionText}
             </span>
           </div>
-          <ItemList />
+          <Shoptype />
         </div>
       ))}
     </div>
