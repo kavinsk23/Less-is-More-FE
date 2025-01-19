@@ -40,7 +40,7 @@ const shopTypes: ShopTypeCardProps[] = [
 
 const ShopTypeCard: React.FC<ShopTypeCardProps> = ({ type, image, icon }) => {
   return (
-    <div className="w-56 bg-white rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-95 cursor-pointer">
+    <div className="w-full sm:w-56 bg-white rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-95 cursor-pointer">
       <div className="relative h-48">
         <img src={image} alt={type} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/50" />
@@ -63,7 +63,7 @@ const ShopTypeCard: React.FC<ShopTypeCardProps> = ({ type, image, icon }) => {
 
 const Shoptype = () => {
   return (
-    <div className="flex space-x-6 overflow-x-auto py-4 scrollbar-hide">
+    <div className="flex flex-col sm:flex-row gap-4 overflow-x-auto py-4 scrollbar-hide">
       {shopTypes.map((shopType, index) => (
         <ShopTypeCard key={index} {...shopType} />
       ))}

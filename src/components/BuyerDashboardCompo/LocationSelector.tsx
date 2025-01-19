@@ -12,12 +12,18 @@ const LocationSelector = () => {
     setSelectedLocation(city);
   };
 
-  const handlePopupClose = () => {
+  const handlePopupClose = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent event from bubbling up
     setShowPopup(false);
   };
 
-  const handleApply = () => {
+  const handleApply = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent event from bubbling up
     setShowPopup(false);
+  };
+
+  const handlePopupContainerClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent click from reaching the background
   };
 
   return (
@@ -31,8 +37,14 @@ const LocationSelector = () => {
       </span>
 
       {showPopup && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
-          <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-md">
+        <div
+          className="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50"
+          onClick={handlePopupClose} // Close when clicking the backdrop
+        >
+          <div
+            className="bg-white shadow-md rounded-lg p-6 w-full max-w-md"
+            onClick={handlePopupContainerClick} // Prevent closure when clicking the popup content
+          >
             <LocationInput
               value={selectedLocation}
               onChange={handleLocationChange}

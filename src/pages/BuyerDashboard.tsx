@@ -13,9 +13,8 @@ const BuyerDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-row">
+    <div className="min-h-screen bg-background">
       <LeftMenu />
-
       <main className="flex flex-col container p-4 space-y-8">
         <CardWithTitleCompo />
         <ShopWithTitleCompo />

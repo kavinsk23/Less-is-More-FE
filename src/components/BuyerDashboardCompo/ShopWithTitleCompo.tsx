@@ -19,7 +19,7 @@ const sections: Section[] = [
 
 const CardWithTitleCompo: React.FC = () => {
   return (
-    <div className="space-y-4 w-max">
+    <div className="space-y-4 w-full sm:w-max">
       {sections.map((section) => (
         <div key={section.id}>
           <div className="flex justify-between">
