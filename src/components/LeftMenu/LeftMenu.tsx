@@ -63,7 +63,7 @@ const LeftMenu = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="bg-white shadow-md p-2 w-20 h-screen">
+    <div className="bg-white shadow-md p-2 w-20">
       <LocationSelector />
       <nav>
         <ul className="space-y-4 mt-4">

@@ -1,9 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import LocationSelector from "../components/BuyerDashboardCompo/LocationSelector";
 import LeftMenu from "../components/LeftMenu/LeftMenu";
-import ItemCard from "../components/BuyerDashboardCompo/CardWithTitleCompo/ItemCard";
-import ShopPage from "../components/BuyerDashboardCompo/CardWithTitleCompo";
+import CardWithTitleCompo from "../components/BuyerDashboardCompo/CardWithTitleCompo";
+import ShopWithTitleCompo from "../components/BuyerDashboardCompo/ShopWithTitleCompo";
 
 const BuyerDashboard = () => {
   const navigate = useNavigate();
@@ -14,11 +13,12 @@ const BuyerDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-row h-10">
+    <div className="min-h-screen bg-background flex flex-row">
       <LeftMenu />
 
-      <main className="flex flex-row container p-4">
-        <ShopPage />
+      <main className="flex flex-col container p-4 space-y-8">
+        <CardWithTitleCompo />
+        <ShopWithTitleCompo />
       </main>
     </div>
   );
