@@ -1,6 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import LocationSelector from "../components/BuyerDashboardCompo/LocationSelector";
+import LeftMenu from "../components/LeftMenu/LeftMenu";
+import ItemCard from "../components/BuyerDashboardCompo/CardWithTitleCompo/ItemCard";
+import ShopPage from "../components/BuyerDashboardCompo/CardWithTitleCompo";
 
 const BuyerDashboard = () => {
   const navigate = useNavigate();
@@ -11,18 +14,12 @@ const BuyerDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      {/* Main Content */}
-      <main className="flex-grow container mx-auto p-4">
-        <LocationSelector />
-      </main>
+    <div className="min-h-screen bg-background flex flex-row h-10">
+      <LeftMenu />
 
-      {/* Footer */}
-      <footer className="bg-gray-100 p-4 text-center">
-        <p className="text-small text-neutral">
-          © {new Date().getFullYear()} Food Waste Reduction Platform
-        </p>
-      </footer>
+      <main className="flex flex-row container p-4">
+        <ShopPage />
+      </main>
     </div>
   );
 };

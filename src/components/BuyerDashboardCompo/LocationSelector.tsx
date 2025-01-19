@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ChevronDown, MapPin } from "lucide-react";
+import { MapPin, ChevronDown } from "lucide-react";
 import LocationInput from "../UserAuthCompo/SignUpFormCompo/LocationInput";
 
 const LocationSelector = () => {
@@ -21,18 +21,14 @@ const LocationSelector = () => {
   };
 
   return (
-    <div className="flex items-center">
-      <MapPin className="w-5 h-5 mr-2 text-primary" />
-      <div className="mr-2">Location:</div>
-      <button
-        className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary"
-        onClick={() => setShowPopup(true)}
-      >
-        <a href="#" className="hover:no-underline text-primary/80 text-small">
-          {selectedLocation}
-        </a>
-        <ChevronDown className="w-5 h-5 text-primary ml-2" />
-      </button>
+    <div
+      className="flex flex-col items-center justify-center p-2 cursor-pointer"
+      onClick={() => setShowPopup(true)}
+    >
+      <MapPin className="w-5 h-5 text-primary" />
+      <span className="text-small font-medium text-primary mt-1">
+        {selectedLocation}
+      </span>
 
       {showPopup && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
